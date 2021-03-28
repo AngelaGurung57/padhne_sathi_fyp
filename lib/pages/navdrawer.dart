@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:padhne_sathi/pages/dashboard.dart';
-import 'package:padhne_sathi/pages/editprofile.dart';
-import 'package:padhne_sathi/pages/profile.dart';
+import 'dashboard.dart';
+import 'profile.dart';
 import 'editprofile.dart';
+
 
 class NavDrawer extends StatefulWidget {
   @override

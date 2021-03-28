@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:padhne_sathi/pages/dashboard.dart';
-import 'navdrawer.dart';
+import 'dashboard.dart';
+
+
 
 
 class Profile extends StatelessWidget {

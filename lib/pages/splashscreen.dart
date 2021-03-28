@@ -28,15 +28,15 @@ class _SplashScreenState extends State<SplashScreen> {
               ),
 
 
-              // Positioned(
-              //     child: Center(
-              //       child: Container(
-              //         child: Image.asset(
-              //           'assets/sathi.png',
-              //         ),
-              //       ),
-              //     ),
-              // ),
+              Positioned(
+                  child: Center(
+                    child: Container(
+                      child: Image.asset(
+                        'assets/sathi.png',
+                      ),
+                    ),
+                  ),
+              ),
               Container(
 
                 child: Image.asset(

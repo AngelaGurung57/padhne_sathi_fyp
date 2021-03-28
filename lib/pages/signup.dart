@@ -1,6 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:http/http.dart' as http;
 import 'login.dart';
+import 'dart:convert';
 
+
+void main(){
+  runApp(Register());
+}
+
+class Register extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: SignUp(),
+    );
+  }
+}
 
 class SignUp extends StatefulWidget {
   @override
@@ -8,6 +24,21 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  TextEditingController name = TextEditingController();
+  TextEditingController email = TextEditingController();
+  TextEditingController password = TextEditingController();
+
+  Future register() async{
+    var url = Uri.parse('http://192.168.1.100/test/register.php');
+    var response = await http.post(url, body: {
+      "name": name.text,
+      "email": email.text,
+      "password": password.text,
+    });
+
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +72,8 @@ class _SignUpState extends State<SignUp> {
                         hintText: 'Your name please',
                         prefixIcon: Icon(Icons.person),
                       ),
-                      //controller: name,
+                      controller: name,
+
                     ),
                   ),
 
@@ -54,7 +86,7 @@ class _SignUpState extends State<SignUp> {
                           prefixIcon: Icon(Icons.email),
                           hintText: 'abc@gmail.com'
                       ),
-                      // controller: email,
+                      controller: email,
                     ),
                   ),
 
@@ -67,7 +99,7 @@ class _SignUpState extends State<SignUp> {
                           prefixIcon: Icon(Icons.lock),
                           hintText: 'Please enter your password.'
                       ),
-                      //controller: password,
+                      controller: password,
                     ),
                   ),
 
@@ -112,3 +144,4 @@ class _SignUpState extends State<SignUp> {
     );
   }
 }
+
