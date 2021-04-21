@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:padhne_sathi/pages/signup.dart';
 import 'dashboard.dart';
+import 'package:http/http.dart' as http;
+//import 'package:fluttertoast/fluttertoast.dart';
+//import 'dart:convert';
+
 
 class Login extends StatefulWidget {
   @override
@@ -8,6 +12,41 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  
+ 
+
+  // // TextEditingController cpass = new TextEditingController();
+
+  Future login() async{
+    
+    String url = "http://192.168.1.100/fyp/login.php";
+    // print(nameController.text);
+    var response = await http.post(url,body:{
+
+      "email" : emailController.text,
+      "password" : passwordController.text,
+    });
+  
+   // var datajson = json.decode(response.body);
+    //print(datajson);
+    // Navigator.push(context, MaterialPageRoute(builder: (_) => DashBoard()));
+    // if (datajson == "Success")
+    // {
+    //   //print(datajson);
+    //   //Fluttertoast.showToast(msg: "Loged In", toastLength: Toast.LENGTH_LONG);
+    //   // Navigator.push(context, MaterialPageRoute(builder: (_) => DashBoard()));
+    //   //Navigator.push(context, MaterialPageRoute(builder: (context)=>DashBoard(),),);
+    // }
+    //  else
+    // {
+    //   Fluttertoast.showToast(msg: "incorrect email and password");
+    // }
+  }
+  
+    
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,6 +73,7 @@ class _LoginState extends State<Login> {
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: TextField(
+                      controller: emailController,
                       decoration: InputDecoration(
                           focusColor: Colors.white70,
                           border: OutlineInputBorder(
@@ -48,6 +88,7 @@ class _LoginState extends State<Login> {
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: TextField(
+                      controller: passwordController,
                       decoration: InputDecoration(
                           border: OutlineInputBorder(),
                           prefixIcon: Icon(Icons.lock),
@@ -63,9 +104,10 @@ class _LoginState extends State<Login> {
                         color: Colors.purple,
                         borderRadius: BorderRadius.circular(20)),
                     child: TextButton(
-                      onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(
-                            builder: (_) => DashBoard()));
+                      onPressed: ()
+                       {
+                         login();
+                        Navigator.push(context, MaterialPageRoute(builder: (_) => DashBoard()));
                       },
                       child: Text(
                         'Login',

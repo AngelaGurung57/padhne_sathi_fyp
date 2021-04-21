@@ -1,18 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:padhne_sathi/pages/signup.dart';
-import 'login.dart';
+import 'package:qr_flutter/qr_flutter.dart';
+import 'package:barcode_scanner/barcode_scanning_data.dart';
+import 'scanqr.dart';
 
 
-class SplashScreen extends StatefulWidget {
+
+class QrGenerate extends StatefulWidget {
   @override
-  _SplashScreenState createState() => _SplashScreenState();
+  _QrGenerateState createState() => _QrGenerateState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _QrGenerateState extends State<QrGenerate> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
+      appBar: AppBar(
+        title: Text(
+          "Scan and Generate QR",
+        ),
+        backgroundColor: Color.fromARGB(255, 124, 57, 167),
+      ),
       body: Container(
 
         child: Center(
@@ -22,31 +29,28 @@ class _SplashScreenState extends State<SplashScreen> {
               SizedBox(
                 height: 100,
               ),
-              Text(
-                'Welcome to\nPadhne Sathi',
-                style: TextStyle(color: Colors.black, fontSize: 32 ),
-              ),
 
-              // Positioned(
-              //     child: Center(
-              //       child: Container(
-              //         child: Image.asset(
-              //           'assets/sathi.png',
-              //         ),
-              //       ),
-              //     ),
-              // ),
+
+// Positioned(
+//     child: Center(
+//       child: Container(
+//         child: Image.asset(
+//           'assets/sathi.png',
+//         ),
+//       ),
+//     ),
+// ),
               Container(
 
                 child: Image.asset(
-                  'assets/sathi.png',
+                  'assets/scanqr.png',
                 ),
-                ),
+              ),
 
 
-              // SizedBox(
-              //   height: 30,
-              // ),
+// SizedBox(
+//   height: 30,
+// ),
 
               Padding(
                 padding: const EdgeInsets.all(20.0),
@@ -64,10 +68,12 @@ class _SplashScreenState extends State<SplashScreen> {
                         child: TextButton(
                           onPressed: () {
                             Navigator.push(
-                                context, MaterialPageRoute(builder: (_) => SignUp()));
+                                context,
+                                MaterialPageRoute(builder: (_) => ScanQr()
+                                ));
                           },
                           child: Text(
-                            'Sign Up',
+                            'Scan QR',
                             style: TextStyle(color: Colors.white, fontSize: 25),
                           ),
                         ),
@@ -84,12 +90,16 @@ class _SplashScreenState extends State<SplashScreen> {
                             borderRadius: BorderRadius.circular(20)
                         ),
                         child: TextButton(
-                          onPressed: () {
-                            Navigator.push(
-                                context, MaterialPageRoute(builder: (_) => Login()));
+                          onPressed: () async{
+
+
+
+                            // Navigator.push(
+                            //     context,
+                            //     MaterialPageRoute(builder: (_) => Login()));
                           },
                           child: Text(
-                            'Login',
+                            'Generate QR',
                             style: TextStyle(color: Colors.white, fontSize: 25),
                           ),
                         ),
@@ -105,3 +115,8 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 }
+
+
+
+
+

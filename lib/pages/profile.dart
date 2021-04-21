@@ -2,9 +2,22 @@ import 'package:flutter/material.dart';
 import 'dashboard.dart';
 
 
+class Prof extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: "Edit Profile",
+      home: Profile(),
+    );
+  }
+}
+class Profile extends StatefulWidget {
+  @override
+  _ProfileState createState() => _ProfileState();
+}
 
-
-class Profile extends StatelessWidget {
+class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -29,6 +42,21 @@ class Profile extends StatelessWidget {
         Scaffold(
           appBar: AppBar(
             backgroundColor: Color.fromARGB(255, 124, 57, 167),
+            title: Text('Padhne Sathi, Profile'),
+            titleTextStyle: TextStyle(color: Colors.blueGrey),
+
+            actions: [
+              IconButton(icon:const Icon(Icons.search),
+                onPressed: (){
+                },
+              ),
+
+              IconButton(icon:const Icon(Icons.info),
+                onPressed: (){
+                },
+              ),
+            ],
+
             leading: IconButton(
               icon: Icon(
                 Icons.arrow_back,
@@ -37,6 +65,7 @@ class Profile extends StatelessWidget {
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: (_) => DashBoard()));
               },
+
             ),
           ),
           backgroundColor: Colors.transparent,

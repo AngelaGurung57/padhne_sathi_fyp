@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'dashboard.dart';
-import 'profile.dart';
+// import 'profile.dart';
 import 'editprofile.dart';
+import 'requestbooks.dart';
+import '../scan/qrgenerate.dart';
 
 
 class NavDrawer extends StatefulWidget {
@@ -25,29 +27,31 @@ class _NavDrawerState extends State<NavDrawer> {
               },
             ),
 
+
             ListTile(
               leading: Icon(Icons.person),
               title: Text("Profile"),
               onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (_) => Profile()));
+                Navigator.push(context, MaterialPageRoute(builder: (_) => EditProfile()));
               },
             ),
 
             ListTile(
               leading: Icon(Icons.book),
-              title: Text("My Books"),
+              title: Text("Request Books"),
               onTap: (){
-
+                Navigator.push(context, MaterialPageRoute(builder: (_) => RequestBooks()));
               },
             ),
 
             ListTile(
-              leading: Icon(Icons.edit),
-              title: Text("Edit Profile"),
+              leading: Icon(Icons.qr_code),
+              title: Text("QR Scan"),
               onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (_) => EditProfile()));
+                Navigator.push(context, MaterialPageRoute(builder: (_) => QrGenerate()));
               },
             ),
+
 
             ListTile(
               leading: Icon(Icons.logout),

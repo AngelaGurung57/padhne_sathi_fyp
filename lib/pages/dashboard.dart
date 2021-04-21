@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'navdrawer.dart';
 import 'books.dart';
+import 'sharebooks.dart';
 
 class DashBoard extends StatefulWidget {
   @override
@@ -36,7 +37,7 @@ class _DashBoardState extends State<DashBoard> {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -114,22 +115,20 @@ class _DashBoardState extends State<DashBoard> {
       ),
 
       body: Container(
-        //decoration: BoxDecoration(
-        //gradient: LinearGradient(
-        //colors: [
-        //Color.fromRGBO(82, 13, 132, 0.9019607843137255),
-        //Color.fromRGBO(101, 39, 171, 1.0),
-        //],
-        //begin: FractionalOffset.bottomCenter,
-        //end: FractionalOffset.topCenter,
-        //),
-        //),
         height: size.height,
         child: Column(
           children: <Widget>[
             const SizedBox(
               height: 10,
             ),
+            // TextButton(
+            //     onPressed: (){
+            //
+            //       Navigator.push(context, MaterialPageRoute(builder: (context) => ShareBooks()));
+            //     },
+            //     child: Text(
+            //       'Share books'
+            //     )),
             AnimatedOpacity(
               duration: const Duration(milliseconds: 200),
               opacity: closeTopContainer?0:1,
@@ -167,9 +166,33 @@ class _DashBoardState extends State<DashBoard> {
                         ),
                       );
                     })),
-          ],
 
+
+            Container(
+              height: 50,
+              width: 250,
+              decoration: BoxDecoration(
+                  color: Colors.purple,
+                  borderRadius: BorderRadius.circular(20)),
+              child: TextButton(
+                onPressed: //register,
+                    (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => ShareBooks()));
+                },
+                child: Text(
+                  'Share Books',
+                  style: TextStyle(color: Colors.white, fontSize: 25),
+
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 17,
+            ),
+          ],
         ),
+
+
       ),
 
     );
